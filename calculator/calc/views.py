@@ -6,3 +6,6 @@ def index(request):
 
 def calcs(request, calc_slug: str):
     return HttpResponse(f'Calculators {calc_slug} page')
+
+def page_not_found(request: HttpRequest, exception: Http404):
+    return HttpResponseNotFound(f'Page not found: {exception}')
