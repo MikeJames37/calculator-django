@@ -1,16 +1,18 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpRequest, HttpResponseNotFound, Http404
+from django.template.defaultfilters import title
 
-menu = [
-    {'title': 'About site', 'url_name': 'about'},
-    {'title': 'Calculators', 'url_name': 'calcs'},
-    {'title': 'Add calculator', 'url_name': 'add_calc'},
-    {'title': 'Feedback', 'url_name': 'feedback'},
-    {'title': 'Login', 'url_name': 'login'},
+menu = [ 'About site', 'Calculators', 'Add calculator', 'Feedback', 'Login']
+
+calcs = [
+    {'title': 'Weight Calculator', 'slug': 'weight', 'published': True},
+    {'title': 'Sheet metal Calculator', 'slug': 'sheet-metal', 'published': False},
+    {'title': 'Length of the bent profile Calculator', 'slug': 'length-bent-profile', 'published': False},
+    {'title': 'Cost Calculator', 'slug': 'cost', 'published': True},
 ]
-
 data = {'title': 'Main Page',
-        'menu': menu}
+        'menu': menu,
+        'calcs': calcs,}
 
 def index(request):
     return render(request, 'calc/index.html', context=data)
