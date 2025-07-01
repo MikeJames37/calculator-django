@@ -2,7 +2,15 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpRequest, HttpResponseNotFound, Http404
 from django.template.defaultfilters import title
 
-menu = [ 'About site', 'Calculators', 'Add calculator', 'Feedback', 'Login']
+
+menu = [
+        {'title': 'Home page', 'url_name': 'index'},
+        {'title': 'About site', 'url_name': 'about'},
+        {'title': 'Calculators', 'url_name': 'calculators'},
+        {'title': 'Add calculator', 'url_name': 'add'},
+        {'title': 'Feedback', 'url_name': 'feedback'},
+        {'title': 'Login', 'url_name': 'login'},
+        ]
 
 calcs = [
     {'title': 'Weight Calculator', 'slug': 'weight', 'published': True},
@@ -25,3 +33,15 @@ def page_not_found(request: HttpRequest, exception: Http404):
 
 def about(request):
     return render(request, 'calc/about.html', context={'title': 'About site', 'menu': menu})
+
+def calculators(request):
+    return render(request, 'calc/calculators.html', context={'title': 'Calculators', 'menu': menu})
+
+def add(request):
+    return HttpResponse(f'Add-calculator page')
+
+def feedback(request):
+    return HttpResponse(f'Feedback page')
+
+def login(request):
+    return HttpResponse(f'Login')

@@ -5,13 +5,20 @@
     <title>{{ title }}</title>
 </head>
 <body>
-    <p>{{ menu|join:' | ' }}</p>
-    <h1>{{ title }}</h1>
+    <ul>
+        <li><a href="{% url 'home' %}"> Main page</a></li>
+        <li><a href="{% url 'about' %}"> About site</a></li>
+        <li><a href="{% url 'calculators' %}"> Calculators</a></li>
+        <li><a href="{% url 'add' %}"> Add calculator</a></li>
+        <li><a href="{% url 'feedback' %}"> Feedback</a></li>
+        <li><a href="{% url 'login' %}"> Login</a></li>
+    </ul>
     <ul>
         {% for c in calcs %}
-        {% if c.published%}
+        {% if c.published %}
         <li>
             <h3>{{ c.title}}</h3>
+            <a href="{% url 'calc' c.slug %}">Open {{ c.title }}</a>
             {% if not forloop.last %}
             <hr>
             {% endif %}
