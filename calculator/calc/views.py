@@ -35,7 +35,7 @@ def about(request):
     return render(request, 'calc/about.html', context={'title': 'About site', 'menu': menu})
 
 def calculators(request):
-    return render(request, 'calc/calculators.html', context={'title': 'Calculators', 'menu': menu})
+    return HttpResponse(f'Calculators page')
 
 def add(request):
     return HttpResponse(f'Add-calculator page')

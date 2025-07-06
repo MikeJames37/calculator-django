@@ -1,0 +1,10 @@
+<nav>
+    {% for c in calcs %}
+    {% if c.published %}
+        <a href="{% url 'calc' c.slug %}">{{ c.title }}</a>
+        {% if not forloop.last %}
+        <span> | </span>
+        {% endif %}
+    {% endif %}
+    {% endfor %}
+</nav>

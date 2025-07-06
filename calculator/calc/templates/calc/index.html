@@ -1,18 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ title }}</title>
-</head>
-<body>
-    <ul>
-        <li><a href="{% url 'home' %}"> Main page</a></li>
-        <li><a href="{% url 'about' %}"> About site</a></li>
-        <li><a href="{% url 'calculators' %}"> Calculators</a></li>
-        <li><a href="{% url 'add' %}"> Add calculator</a></li>
-        <li><a href="{% url 'feedback' %}"> Feedback</a></li>
-        <li><a href="{% url 'login' %}"> Login</a></li>
-    </ul>
+{% extends 'base.html' %}
+
+{% block content %}
+    {% include 'calc/includes/nav.html' %}
+
     <ul>
         {% for c in calcs %}
         {% if c.published %}
@@ -26,5 +16,6 @@
         {% endif %}
         {% endfor %}
     </ul>
-</body>
-</html>
+
+    {% include 'calc/includes/nav.html' %}
+{% endblock %}
