@@ -1,4 +1,5 @@
 {% load static %}
+{% load calc_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,9 +44,34 @@
             </div>
         </nav>
 
-        <div class="container mt-4">
-            {% block content %}
-            {% endblock %}
+        <div class="container-fluid mt-4 content">
+            <div class="row">
+                <!-- Боковое меню -->
+                <aside class="col-md-3 mb-4">
+                    <div class="list-group">
+<!--                         {% get_calculators as calculators %}-->
+                        {% if calc_selected is None%}
+                            <a href="{% url 'calculators' %}" class="list-group-item list-group-item-action active" aria-current="true">
+                                Calculators
+                            </a>
+                        {% else %}
+                            <a href="{% url 'calculators' %}" class="list-group-item list-group-item-action" aria-current="true">
+                                Calculators
+                            </a>
+                        {% endif %}
+                        {% show_calculators calc_selected%}
+<!--                        {% for calc in calculators %}-->
+<!--                            <a href="{% url 'calc' calc.slug %}" class="list-group-item list-group-item-action">{{ calc.title }}</a>-->
+<!--                        {% endfor %}-->
+                    </div>
+                </aside>
+
+                <!-- Основной контент -->
+                <main class="col-md-9">
+                    {% block content %}
+                    {% endblock %}
+                </main>
+            </div>
         </div>
 
         <footer class="bg-light text-center text-lg-start mt-5 py-3 border-top">
@@ -72,7 +98,7 @@
                                 <a class="nav-link" href="{% url 'login' %}">Login</a>
                             </li>
                         </ul>
-                        <p class="text-center small mt-2">&copy; MetalCalc. All rights reserved.</p>
+                        <p class="text-center small mt-2">&copy; {{ year }} MetalCalc. All rights reserved.</p>
                     </div>
                 </div>
             </div>

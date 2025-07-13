@@ -1,0 +1,11 @@
+{% for calc in calcs %}
+    {% if calc.published == False %}
+        <a href="{% url 'calc' calc.slug %}" class="list-group-item list-group-item-action disabled text-muted" tabindex="-1" aria-disabled="true">{{ calc.title }}</a>
+    {% else %}
+        {% if calc.slug == calc_selected %}
+            <a href="{% url 'calc' calc.slug %}" class="list-group-item list-group-item-action active">{{ calc.title }}</a>
+        {% else %}
+            <a href="{% url 'calc' calc.slug %}" class="list-group-item list-group-item-action">{{ calc.title }}</a>
+        {% endif %}
+    {% endif %}
+{% endfor %}
