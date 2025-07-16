@@ -22,22 +22,22 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'home' %}">Main page</a>
+                            <a class="nav-link" href="{% url 'home' %}">Главная страница</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'about' %}">About site</a>
+                            <a class="nav-link" href="{% url 'about' %}">О сайте</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'calculators' %}">Calculators</a>
+                            <a class="nav-link" href="{% url 'calculators' %}">Калькуляторы</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'add' %}">Add calculator</a>
+                            <a class="nav-link" href="{% url 'add' %}">Создать калькулятор</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'feedback' %}">Feedback</a>
+                            <a class="nav-link" href="{% url 'feedback' %}">Обратная связь</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'login' %}">Login</a>
+                            <a class="nav-link" href="{% url 'login' %}">Войти</a>
                         </li>
                     </ul>
                 </div>
@@ -49,20 +49,16 @@
                 <!-- Боковое меню -->
                 <aside class="col-md-3 mb-4">
                     <div class="list-group">
-<!--                         {% get_calculators as calculators %}-->
-                        {% if calc_selected is None%}
+                        {% if calc_selected is None %}
                             <a href="{% url 'calculators' %}" class="list-group-item list-group-item-action active" aria-current="true">
-                                Calculators
+                                Калькуляторы
                             </a>
                         {% else %}
                             <a href="{% url 'calculators' %}" class="list-group-item list-group-item-action" aria-current="true">
-                                Calculators
+                                Калькуляторы
                             </a>
                         {% endif %}
-                        {% show_calculators calc_selected%}
-<!--                        {% for calc in calculators %}-->
-<!--                            <a href="{% url 'calc' calc.slug %}" class="list-group-item list-group-item-action">{{ calc.title }}</a>-->
-<!--                        {% endfor %}-->
+                        {% show_calculators calc_selected %}
                     </div>
                 </aside>
 
@@ -80,25 +76,25 @@
                     <div class="col-md-12">
                         <ul class="nav justify-content-center">
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'home' %}">Main page</a>
+                                <a class="nav-link" href="{% url 'home' %}">Главная страница</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'about' %}">About site</a>
+                                <a class="nav-link" href="{% url 'about' %}">О сайте</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'calculators' %}">Calculators</a>
+                                <a class="nav-link" href="{% url 'calculators' %}">Калькуляторы</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'add' %}">Add calculator</a>
+                                <a class="nav-link" href="{% url 'add' %}">Создать калькулятор</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'feedback' %}">Feedback</a>
+                                <a class="nav-link" href="{% url 'feedback' %}">Обратная связь</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'login' %}">Login</a>
+                                <a class="nav-link" href="{% url 'login' %}">Войти</a>
                             </li>
                         </ul>
-                        <p class="text-center small mt-2">&copy; {{ year }} MetalCalc. All rights reserved.</p>
+                        <p class="text-center small mt-2">&copy; {{ year }} MetalCalc. Все права защищены.</p>
                     </div>
                 </div>
             </div>

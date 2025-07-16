@@ -5,21 +5,21 @@ from datetime import datetime
 
 
 MENU = [
-        {'title': 'Home page', 'url_name': 'index'},
-        {'title': 'About site', 'url_name': 'about'},
-        {'title': 'Calculators', 'url_name': 'calculators'},
-        {'title': 'Add calculator', 'url_name': 'add'},
-        {'title': 'Feedback', 'url_name': 'feedback'},
-        {'title': 'Login', 'url_name': 'login'},
+        {'title': 'Главная страница', 'url_name': 'index'},
+        {'title': 'О сайте', 'url_name': 'about'},
+        {'title': 'Калькуляторы', 'url_name': 'calculators'},
+        {'title': 'Создать калькулятор', 'url_name': 'add'},
+        {'title': 'Обратная связь', 'url_name': 'feedback'},
+        {'title': 'Войти', 'url_name': 'login'},
         ]
 
 CALCS = [
-    {'title': 'Weight Calculator', 'slug': 'weight', 'published': True},
-    {'title': 'Sheet metal Calculator', 'slug': 'sheet-metal', 'published': False},
-    {'title': 'Length of the bent profile Calculator', 'slug': 'length-bent-profile', 'published': False},
-    {'title': 'Cost Calculator', 'slug': 'cost', 'published': True},
+    {'title': 'Расчет веса металлопроката', 'slug': 'weight', 'published': True},
+    {'title': 'Расчет раскроя листового проката', 'slug': 'sheet-metal', 'published': False},
+    {'title': 'Расчёт длины развёртки гнутого профиля', 'slug': 'length-bent-profile', 'published': False},
+    {'title': 'Расчёт себестоимости раскроя', 'slug': 'cost', 'published': True},
 ]
-DATA = {'title': 'Main Page',
+DATA = {'title': 'Главная страница',
         'menu': MENU,
         'calcs': CALCS,
         'year': datetime.now().year,
@@ -32,25 +32,25 @@ def calcs(request, calc_slug: str):
     return HttpResponse(f'Calculators {calc_slug} page')
 
 def page_not_found(request: HttpRequest, exception: Http404):
-    return HttpResponseNotFound(f'Page not found: {exception}')
+    return HttpResponseNotFound(f'Страница не найдена: {exception}')
 
 def about(request):
-    return render(request, 'calc/about.html', context={'title': 'About site', 'menu': MENU})
+    return render(request, 'calc/about.html', context={'title': 'О сайте', 'menu': MENU})
 
 def calculators(request):
-    return HttpResponse(f'Calculators page')
+    return HttpResponse(f'Страница с калькулятором')
 
 def add(request):
-    return HttpResponse(f'Add-calculator page')
+    return HttpResponse(f'Создать калькулятор')
 
 def feedback(request):
-    return HttpResponse(f'Feedback page')
+    return HttpResponse(f'Обратная связь')
 
 def login(request):
-    return HttpResponse(f'Login')
+    return HttpResponse(f'Кабинет пользователя')
 
 def show_calculators(request, calc_slug):
-    DATA = {'title': 'Main Page',
+    DATA = {'title': 'Главная страница',
             'menu': MENU,
             'calcs': CALCS,
             'year': datetime.now().year,
