@@ -1,8 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpRequest, HttpResponseNotFound, Http404
 from django.template.defaultfilters import title
 from datetime import datetime
 
+from calc.models import Calculator
 
 MENU = [
         {'title': 'Главная страница', 'url_name': 'index'},
@@ -29,7 +30,13 @@ def index(request):
     return render(request, 'calc/index.html', context=DATA)
 
 def calcs(request, calc_slug: str):
-    return HttpResponse(f'Calculators {calc_slug} page')
+    calcs = get_object_or_404(Calculator, slug=calc_slug)
+    DATA = {'title': 'Главная страница',
+            'menu': MENU,
+            'calcs': calcs,
+            'year': datetime.now().year,
+            'calc_selected': calc_slug, }
+    return render(request, 'calc/calc.html', context=DATA)
 
 def page_not_found(request: HttpRequest, exception: Http404):
     return HttpResponseNotFound(f'Страница не найдена: {exception}')
@@ -50,6 +57,7 @@ def login(request):
     return HttpResponse(f'Кабинет пользователя')
 
 def show_calculators(request, calc_slug):
+    calc = get_object_or_404(Calculator, slug=calc_slug)
     DATA = {'title': 'Главная страница',
             'menu': MENU,
             'calcs': CALCS,
