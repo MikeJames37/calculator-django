@@ -5,7 +5,6 @@
 
     <ul>
         {% for c in calcs %}
-        {% if c.is_published %}
         <li>
             <h4>{{ c.name}}</h4>
             <a href="{{ c.get_absolute_url }}">Открыть {{ c.name }}</a>
@@ -13,7 +12,6 @@
             <hr>
             {% endif %}
         </li>
-        {% endif %}
         {% endfor %}
     </ul>
 
