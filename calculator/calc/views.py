@@ -27,7 +27,14 @@ DATA = {'title': 'Главная страница',
         'calc_selected': None,}
 
 def index(request):
-    return render(request, 'calc/index.html', context=DATA)
+    calcs = Calculator.objects.filter(is_published=1)
+
+    data = {'title': 'Главная страница',
+        'menu': MENU,
+        'calcs': calcs,
+        'year': datetime.now().year,
+        'calc_selected': None,}
+    return render(request, 'calc/index.html', context=data)
 
 def calcs(request, calc_slug: str):
     calcs = get_object_or_404(Calculator, slug=calc_slug)

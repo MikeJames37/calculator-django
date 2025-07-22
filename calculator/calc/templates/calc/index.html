@@ -5,10 +5,10 @@
 
     <ul>
         {% for c in calcs %}
-        {% if c.published %}
+        {% if c.is_published %}
         <li>
-            <h4>{{ c.title}}</h4>
-            <a href="{% url 'calc' c.slug %}">Открыть {{ c.title }}</a>
+            <h4>{{ c.name}}</h4>
+            <a href="{{ c.get_absolute_url }}">Открыть {{ c.name }}</a>
             {% if not forloop.last %}
             <hr>
             {% endif %}

@@ -1,7 +1,7 @@
 <nav>
     {% for c in calcs %}
-    {% if c.published %}
-        <a href="{% url 'calc' c.slug %}">{{ c.title }}</a>
+    {% if c.is_published %}
+        <a href="{% url 'calc' c.slug %}">{{ c.name }}</a>
         {% if not forloop.last %}
         <span> | </span>
         {% endif %}
